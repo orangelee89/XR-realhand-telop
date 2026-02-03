@@ -2,6 +2,7 @@ package com.example.teleop.hand
 
 import android.util.Log
 import kotlinx.coroutines.*
+import org.json.JSONArray
 import org.json.JSONObject
 import java.net.DatagramPacket
 import java.net.DatagramSocket
@@ -164,11 +165,15 @@ class HandDataSender(
             put("hand", hand)
             put("timestamp", System.currentTimeMillis())
 
-            // O6 control values (0-255)
-            put("o6_values", o6Values.toList())
+            // O6 control values (0-255) - use JSONArray for proper JSON format
+            val o6Array = JSONArray()
+            o6Values.forEach { o6Array.put(it) }
+            put("o6_values", o6Array)
 
             // Normalized values (0.0-1.0) for flexibility
-            put("finger_bend", o6Values.map { it / 255f })
+            val bendArray = JSONArray()
+            o6Values.forEach { bendArray.put(it / 255.0) }
+            put("finger_bend", bendArray)
         }
         return json.toString()
     }

@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.teleop"
+        applicationId = "com.example.teleop_test"
         minSdk = 34
         targetSdk = 36
         versionCode = 1

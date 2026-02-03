@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.HAND_TRACKING" />
     <uses-permission android:name="android.permission.HEAD_TRACKING" />
 
+    <!-- OpenXR permissions for 3D spatial mode -->
+    <uses-permission android:name="org.khronos.openxr.permission.OPENXR" />
+    <uses-permission android:name="org.khronos.openxr.permission.OPENXR_SYSTEM" />
+
     <!-- Network permissions for UDP communication with ROS2 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -26,8 +30,8 @@
             android:theme="@style/Theme.Teleop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="org.khronos.openxr.intent.category.IMMERSIVE_HMD" />
             </intent-filter>
             <property
                 android:name="android.window.PROPERTY_XR_ACTIVITY_START_MODE"
