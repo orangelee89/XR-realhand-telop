@@ -45,6 +45,7 @@ setup(
             'linker_hand_advanced_l10 = linker_hand_ros2_sdk.linker_hand_advanced_l10:main',
             'linker_hand_advanced_g20 = linker_hand_ros2_sdk.linker_hand_advanced_g20:main',
             'teleop_receiver = linker_hand_ros2_sdk.teleop_receiver:main',
+            'mediapipe_teleop = linker_hand_ros2_sdk.mediapipe_teleop:main',
         ],
     },
 )

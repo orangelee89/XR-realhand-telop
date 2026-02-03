@@ -141,6 +141,13 @@ class TeleopReceiver(Node):
 
         # Get O6 control values
         o6_values = data.get('o6_values', [])
+        # Handle string format from VR: "[0, 0, 113, 131, 111, 54]"
+        if isinstance(o6_values, str):
+            try:
+                o6_values = json.loads(o6_values)
+            except json.JSONDecodeError:
+                self.get_logger().warn(f'Failed to parse o6_values string: {o6_values}')
+                return
         if len(o6_values) != 6:
             self.get_logger().warn(f'Invalid o6_values length: {len(o6_values)}, expected 6')
             return
